@@ -37,3 +37,26 @@ class Mss {
 let mss = new Mss(15);
 // mss.#mass = 0;
 mss.calcMss();
+
+class Animal {
+  name;
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+class Dog extends Animal {
+  typeName;
+  constructor(name, typeName) {
+    super(name);
+    this.typeName = typeName;
+  }
+
+  getName() {
+    return this.name;
+  }
+}
+
+let dog = new Dog("dog", "asdfsdf");
+console.log("dog", dog);
+console.log("dog name", dog.name);
