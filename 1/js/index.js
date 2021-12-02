@@ -51,7 +51,8 @@ function Loops() {
   let arrObj = [{ key: "1" }, { key: "2" }, { key: "3" }, { key: "4" }];
   //for, while, do while
   console.log("for loop");
-  for (let i = 0; i < arr.length; i++) {
+  let arrL = arr.length;
+  for (let i = 0; i < arrL; i++) {
     console.log("arr[i]", arr[i]);
   }
   console.log("for of loop");
@@ -59,7 +60,8 @@ function Loops() {
     console.log("item", item);
   }
   console.log("for loop");
-  for (let i = 0; i < arrObj.length; i++) {
+  const arrObjL = arrObj.length;
+  for (let i = 0; i < arrObjL; i++) {
     console.log("arrObj[i]", arrObj[i]);
   }
   console.log("for of loop");
