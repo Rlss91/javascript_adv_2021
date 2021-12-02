@@ -71,3 +71,26 @@ function Loops() {
 }
 
 Loops();
+
+function defParmsFunc(a = 5) {}
+
+defParmsFunc();
+
+function sprArgs(...a) {
+  console.log(a);
+  let sum = 0;
+  for (let num of a) {
+    sum += num;
+  }
+  console.log(sum / a.length);
+}
+
+sprArgs(1, 2, 3);
+sprArgs(3, 4, 5, 6);
+sprArgs(2, 3);
+
+function objDeFunc({ key }) {
+  console.log(key);
+}
+
+objDeFunc({ key: "123", key2: "123" });
