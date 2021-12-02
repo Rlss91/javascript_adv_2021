@@ -126,3 +126,89 @@ Promise.all([frthPromise(), trdPromise().catch((erro) => erro)])
   .catch((err) => {
     console.error("trdPromise2 err", err);
   });
+
+/*
+
+  create async promise that should add 2 random numbers 
+  and display the result after 1-10 sec
+
+  */
+
+let calcPromise = new Promise((ok, not) => {
+  let timeout = Math.floor(Math.random() * (10 - 1) + 1);
+  setTimeout(() => {
+    let a = Math.floor(Math.random() * (100 - 1) + 1);
+    let b = Math.floor(Math.random() * (100 - 1) + 1);
+    ok({ a: a, b: b, aPb: a + b });
+  }, timeout * 1000);
+});
+
+calcPromise.then((number) => {
+  console.log(number);
+});
+
+/*
+
+    create async promise that should subtract 2 random numbers 
+    if the result is positive then display it
+    else display it as error
+    display the result after 1-10 sec
+
+*/
+let calcPromise2 = new Promise((ok, not) => {
+  let timeout = Math.floor(Math.random() * (10 - 1) + 1);
+  setTimeout(() => {
+    let a = Math.floor(Math.random() * (100 - 1) + 1);
+    let b = Math.floor(Math.random() * (100 - 1) + 1);
+    let s = a - b;
+    if (s >= 0) {
+      ok({ a: a, b: b, aSb: s });
+    } else {
+      not({ a: a, b: b, aSb: s });
+    }
+    //   ok({ a: a, b: b, aPb: a + b });
+  }, timeout * 1000);
+});
+
+calcPromise2
+  .then((number) => {
+    console.log(number);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+let paramsPromise = (a, b, c) => {
+  return new Promise((ok, not) => {
+    setTimeout(() => {
+      switch (c) {
+        case "-":
+          ok(a - b);
+          break;
+        case "+":
+          ok(a + b);
+          break;
+        default:
+          not("this operation is not defined");
+          break;
+      }
+    }, 1000);
+  });
+};
+
+paramsPromise(15, 26, "#")
+  .then((number) => {
+    console.log(number);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+/*
+
+    1) generate promise that accepts 2 numbers and one operation (+, -)
+    2) other operation is error
+    3) calc 5 times and display the results after 1 sec
+    4) all the results must be shown
+
+  */
