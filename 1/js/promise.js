@@ -67,11 +67,11 @@ const trdPromise = () => {
     let seconds = Math.floor(Math.random() * (7 - 1) + 1);
     setTimeout(() => {
       let randomNumber = Math.floor(Math.random() * (100 - 1) + 1);
-      //   if (randomNumber % 2 == 0) {
-      resolve({ status: "ok", number: randomNumber, waitTime: seconds });
-      //   } else {
-      //     reject({ status: "error", number: randomNumber, waitTime: seconds });
-      //   }
+      if (randomNumber % 2 == 0) {
+        resolve({ status: "ok", number: randomNumber, waitTime: seconds });
+      } else {
+        reject({ status: "error", number: randomNumber, waitTime: seconds });
+      }
     }, seconds * 1000);
   });
 };
@@ -96,3 +96,33 @@ Promise.all(promiseArray)
 //   .catch((error) => {
 //     console.error("trdPromise", error);
 //   });
+
+const frthPromise = () => {
+  return new Promise((resolve, reject) => {
+    let seconds = Math.floor(Math.random() * (7 - 1) + 1);
+    setTimeout(() => {
+      let randomNumber = Math.floor(Math.random() * (100 - 1) + 1);
+      resolve({ status: "ok", number: randomNumber, waitTime: seconds });
+    }, seconds * 1000);
+  });
+};
+
+/*
+    trdPromise().catch((erro) => erro)
+    ↕
+    trdPromise().catch((erro) => {return erro})
+*/
+Promise.all([frthPromise(), trdPromise().catch((erro) => erro)])
+  .then((data) => {
+    console.log("trdPromise2", data);
+    for (let item of data) {
+      if (item.status === "ok") {
+        console.log("item", item);
+      } else {
+        console.log("error in item", item);
+      }
+    }
+  })
+  .catch((err) => {
+    console.error("trdPromise2 err", err);
+  });
