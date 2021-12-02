@@ -61,3 +61,38 @@ secondPromise()
   .catch((error) => {
     console.error("secondPromise", error);
   });
+
+const trdPromise = () => {
+  return new Promise((resolve, reject) => {
+    let seconds = Math.floor(Math.random() * (7 - 1) + 1);
+    setTimeout(() => {
+      let randomNumber = Math.floor(Math.random() * (100 - 1) + 1);
+      //   if (randomNumber % 2 == 0) {
+      resolve({ status: "ok", number: randomNumber, waitTime: seconds });
+      //   } else {
+      //     reject({ status: "error", number: randomNumber, waitTime: seconds });
+      //   }
+    }, seconds * 1000);
+  });
+};
+
+let promiseArray = [];
+for (let i = 0; i < 5; i++) {
+  promiseArray = [...promiseArray, trdPromise()];
+}
+
+Promise.all(promiseArray)
+  .then((data) => {
+    console.log("trdPromise", data);
+  })
+  .catch((err) => {
+    console.error("trdPromise err", err);
+  });
+
+// trdPromise()
+//   .then((data) => {
+//     console.log("trdPromise", data);
+//   })
+//   .catch((error) => {
+//     console.error("trdPromise", error);
+//   });
