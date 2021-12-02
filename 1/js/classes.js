@@ -60,3 +60,21 @@ class Dog extends Animal {
 let dog = new Dog("dog", "asdfsdf");
 console.log("dog", dog);
 console.log("dog name", dog.name);
+
+class AAA {
+  f1 = () => {
+    console.log("arro", this);
+  };
+  f2() {
+    console.log("normal", this);
+  }
+}
+
+window.addEventListener("load", () => {
+  let a = new AAA();
+  a.f1();
+  a.f2();
+});
+
+// function f1(){}
+// let f1 = ()=>{}
