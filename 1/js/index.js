@@ -48,13 +48,24 @@ ArrayDe();
 
 function Loops() {
   let arr = [1, 2, 3];
+  let arrObj = [{ key: "1" }, { key: "2" }, { key: "3" }, { key: "4" }];
   //for, while, do while
+  console.log("for loop");
   for (let i = 0; i < arr.length; i++) {
-    console.log(arr[i]);
+    console.log("arr[i]", arr[i]);
   }
+  console.log("for of loop");
   for (let item of arr) {
-    console.log(item);
+    console.log("item", item);
+  }
+  console.log("for loop");
+  for (let i = 0; i < arrObj.length; i++) {
+    console.log("arrObj[i]", arrObj[i]);
+  }
+  console.log("for of loop");
+  for (let item of arrObj) {
+    console.log("item", item);
   }
 }
 
-//test
+Loops();
