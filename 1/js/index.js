@@ -94,3 +94,40 @@ function objDeFunc({ key }) {
 }
 
 objDeFunc({ key: "123", key2: "123" });
+
+let arrayOfDogs = [
+  { name: "lucky", age: 1, type: "lavrador" },
+  { name: "rexy", age: 2, type: "shiatsu" },
+  { name: "lui", age: 3, type: "chawchaw" },
+  { name: "lady", age: 4, type: "chawchaw" },
+];
+
+//catch html loaded finished
+window.addEventListener("load", () => {
+  let div = document.getElementById("list");
+  let htmlData = "";
+  div.innerHTML = "";
+  // for loop that will get arrayOfDogs array and will put in dogObj = arrayOfDogs[i]
+  for (let dogObj of arrayOfDogs) {
+    //create tmplate
+    let tmp = `<div class="card">
+                <div class="card-header">
+                  ${dogObj.name}
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">${dogObj.type}</h5>
+                  <p class="card-text">The age is ${dogObj.age}</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>`;
+    //dogObj.name <=> arrayOfDogs[i].name
+    htmlData += tmp; //htmlData = htmlData + tmp;
+  }
+  div.innerHTML = htmlData;
+
+  //html auto complete the wrong way
+  let innerHtml = document.getElementById("innerHtml");
+  innerHtml.innerHTML = "<div>";
+  innerHtml.innerHTML += "<h1>A</h1>";
+  innerHtml.innerHTML += "</div>";
+});
