@@ -11,9 +11,17 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <script src="./js/index.js" defer async></script>
+    <style>
+      .hid {
+        display: none;
+      }
+    </style>
+    <!-- <script src="./js/index.js" defer async></script> -->
     <!-- <script src="./js/classes.js" defer async></script> -->
     <!-- <script src="./js/promise.js" defer async></script> -->
+    <!-- <script src="./js/promise2.js" defer async></script> -->
+    <script src="./js/promiseSimulator.js"></script>
+    <script src="./js/promiseUser.js"></script>
   </head>
   <body>
     <div id="div">test1</div>
@@ -22,5 +30,28 @@
     />
     <div id="list"></div>
     <div id="innerHtml"></div>
+    <div id="promiseSimDiv">
+      <div
+        class="card text-white bg-success mb-3 hid"
+        style="max-width: 18rem"
+        id="ps"
+      >
+        <div class="card-header">promise success</div>
+      </div>
+      <div
+        class="card text-white bg-danger mb-3 hid"
+        style="max-width: 18rem"
+        id="pf"
+      >
+        <div class="card-header">promise fail</div>
+      </div>
+      <div
+        class="card text-dark bg-warning mb-3"
+        style="max-width: 18rem"
+        id="pw"
+      >
+        <div class="card-header">waiting for promise</div>
+      </div>
+    </div>
   </body>
 </html>
