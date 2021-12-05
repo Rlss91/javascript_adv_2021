@@ -96,7 +96,7 @@ function objDeFunc({ key }) {
 objDeFunc({ key: "123", key2: "123" });
 
 let arrayOfDogs = [
-  { name: "lucky", age: 1, type: "lavrador" },
+  { name: "lucky", age: 1, type: "lavrador" }, //[0]
   { name: "rexy", age: 2, type: "shiatsu" },
   { name: "lui", age: 3, type: "chawchaw" },
   { name: "lady", age: 4, type: "chawchaw" },
@@ -130,4 +130,24 @@ window.addEventListener("load", () => {
   innerHtml.innerHTML = "<div>";
   innerHtml.innerHTML += "<h1>A</h1>";
   innerHtml.innerHTML += "</div>";
+
+  let objSor = { name: "shlomo" };
+  let objCpy = { ...objSor };
+  objCpy.name += "avi";
+  console.log({ objSor, objCpy });
+
+  // copy pointers
+  // let adoptionArray = [...arrayOfDogs];
+  // console.log("adoptionArray", adoptionArray);
+  // arrayOfDogs[0].name += "1"; //arrayOfDogs[0].name = arrayOfDogs[0].name + "1"
+  // console.log("adoptionArray", adoptionArray);
+
+  // real copy
+  let adoptionArray = [];
+  for (let itemInArr of arrayOfDogs) {
+    adoptionArray = [...adoptionArray, { ...itemInArr }]; //arrayOfDogs[i]
+  }
+  arrayOfDogs[0].name += "1"; //arrayOfDogs[0].name = arrayOfDogs[0].name + "1"
+  console.log("arrayOfDogs", arrayOfDogs);
+  console.log("adoptionArray", adoptionArray);
 });
