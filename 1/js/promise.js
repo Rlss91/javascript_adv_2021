@@ -203,12 +203,3 @@ paramsPromise(15, 26, "#")
   .catch((error) => {
     console.error(error);
   });
-
-/*
-
-    1) generate promise that accepts 2 numbers and one operation (+, -)
-    2) other operation is error
-    3) calc 5 times and display the results after 1 sec
-    4) all the results must be shown
-
-  */
