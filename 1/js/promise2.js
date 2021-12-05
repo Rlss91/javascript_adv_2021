@@ -53,3 +53,41 @@ makeCoffie()
   .catch((error) => {
     console.error(error);
   });
+
+// let alwaysSuccess = () => {
+//   return new Promise((res, rej) => {
+//     res(true);
+//   });
+// };
+
+// let alwaysFails = () => {
+//   return new Promise((res, rej) => {
+//     rej(false);
+//   });
+// };
+
+//create new promise that will success if choose is true else will fail
+let alwaysWhatWeWillChooseAsYouWish = (choose) => {
+  return new Promise((res, rej) => {
+    if (choose) {
+      res("data from promise");
+    } else {
+      rej("reject from promise");
+    }
+  });
+};
+
+//will do array of promises
+//if all success then will show there data in arrayOfData
+//else will show the error of the promise that failed
+Promise.all([
+  alwaysWhatWeWillChooseAsYouWish(true),
+  alwaysWhatWeWillChooseAsYouWish(false),
+  alwaysWhatWeWillChooseAsYouWish(true),
+])
+  .then((arrayOfData) => {
+    console.log("arrayOfData", arrayOfData);
+  })
+  .catch((error) => {
+    console.log("error from promise all: ", error);
+  });
