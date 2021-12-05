@@ -91,3 +91,58 @@ Promise.all([
   .catch((error) => {
     console.log("error from promise all: ", error);
   });
+
+Promise.all([
+  alwaysWhatWeWillChooseAsYouWish(true).catch((erro) => erro),
+  alwaysWhatWeWillChooseAsYouWish(false).catch((erro) => {
+    console.log("error from promise all: ", erro);
+    return erro;
+  }),
+  alwaysWhatWeWillChooseAsYouWish(true).catch((erro) => erro),
+])
+  .then((arrayOfData) => {
+    console.log("arrayOfData", arrayOfData);
+  })
+  .catch((error) => {
+    console.log("error from promise all: ", error);
+  });
+
+Promise.allSettled([
+  alwaysWhatWeWillChooseAsYouWish(true),
+  alwaysWhatWeWillChooseAsYouWish(false),
+  alwaysWhatWeWillChooseAsYouWish(true),
+]).then((arrayOfData) => {
+  console.log("allSettled - arrayOfData", arrayOfData);
+});
+
+// alwaysWhatWeWillChooseAsYouWish().then((data) => {
+//   alwaysWhatWeWillChooseAsYouWish().then((data) => {
+//     alwaysWhatWeWillChooseAsYouWish().then((data) => {
+//       alwaysWhatWeWillChooseAsYouWish().then((data) => {
+//         alwaysWhatWeWillChooseAsYouWish().then((data) => {
+//           alwaysWhatWeWillChooseAsYouWish().then((data) => {
+//                console.log("asyncFunction -> data: ", data);
+//           });
+//         });
+//       });
+//     });
+//   });
+// });
+
+//if one failed it will jump to catch
+let asyncFunction = async () => {
+  try {
+    let data = await alwaysWhatWeWillChooseAsYouWish(true);
+    console.log("asyncFunction -> data: ", data);
+    data = await alwaysWhatWeWillChooseAsYouWish(true);
+    console.log("asyncFunction -> data: ", data);
+    data = await alwaysWhatWeWillChooseAsYouWish(false);
+    console.log("asyncFunction -> data: ", data);
+    data = await alwaysWhatWeWillChooseAsYouWish(true);
+    console.log("asyncFunction -> data: ", data);
+  } catch (error) {
+    console.log("asyncFunction -> error: ", error);
+  }
+};
+
+asyncFunction();
